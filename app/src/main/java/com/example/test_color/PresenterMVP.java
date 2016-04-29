@@ -1,15 +1,15 @@
 package com.example.test_color;
 
 
-public class PresenterMVP {
-    private ViewMVP viewMVP;
+public class PresenterMvp {
+    private ViewMvp viewMVP;
 
-    public PresenterMVP(ViewMVP view) {
+    public PresenterMvp(ViewMvp view) {
         this.viewMVP = view;
     }
 
     public void loadTeachers(){
-        viewMVP.showTeachers(ModelMVP.getTeachers());
+        viewMVP.showTeachers(ModelMvp.getTeachers());
     }
 
     public void saveSubject(String name, int teachersPosition, int colorPosition){

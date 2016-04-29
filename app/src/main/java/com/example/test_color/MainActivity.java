@@ -16,13 +16,19 @@ import android.widget.Toast;
 
 import com.thebluealliance.spectrum.SpectrumDialog;
 
-public class MainActivity extends AppCompatActivity implements ViewMVP {
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class MainActivity extends AppCompatActivity implements ViewMvp {
 
 
-    private PresenterMVP presenterMVP;
-    private Button mSelectColor;
-    private Spinner mSelectTeachers;
-    private EditText mNameLesson;
+    private PresenterMvp mPresenterMvp;
+    @BindView(R.id.mSelectColor)
+    Button mSelectColor;
+    @BindView(R.id.mSelectTeachers)
+    Spinner mSelectTeachers;
+    @BindView(R.id.mNameLesson)
+    EditText mNameLesson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +37,9 @@ public class MainActivity extends AppCompatActivity implements ViewMVP {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mSelectColor = (Button) findViewById(R.id.mSelectColor);
-        mSelectTeachers = (Spinner) findViewById(R.id.mSelectTeachers);
-        mNameLesson = (EditText) findViewById(R.id.mNameLesson);
-        presenterMVP = new PresenterMVP(MainActivity.this);
+        ButterKnife.bind(this);
 
+        mPresenterMvp = new PresenterMvp(MainActivity.this);
 
         mSelectColor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements ViewMVP {
             }
         });
 
-        presenterMVP.loadTeachers();
+        mPresenterMvp.loadTeachers();
         mSelectTeachers.setPrompt("Title");
         mSelectTeachers.setSelection(2);
         mSelectTeachers.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -93,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements ViewMVP {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.saveLesson) {
-            presenterMVP.saveSubject(mNameLesson.getText().toString(), mSelectTeachers.getSelectedItemPosition(), mSelectColor.getSolidColor());
+            mPresenterMvp.saveSubject(mNameLesson.getText().toString(), mSelectTeachers.getSelectedItemPosition(), mSelectColor.getSolidColor());
         }
 
         return super.onOptionsItemSelected(item);

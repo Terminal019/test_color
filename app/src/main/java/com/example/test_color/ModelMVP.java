@@ -1,7 +1,7 @@
 package com.example.test_color;
 
 
-public class ModelMVP {
+public class ModelMvp {
 
     public static String[] teachers = {"Мария Ивановна", "Петр Александрович", "Валентина Петрова"};
 
