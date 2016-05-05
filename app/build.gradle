@@ -30,10 +30,13 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.1'
     compile 'com.android.support:design:23.2.1'
-
+    //ColorChooser
     compile 'com.thebluealliance:spectrum:0.4.2'
     compile 'com.wada811:android-material-design-colors:2.0.0'
-
+    //ViewInjection
     compile 'com.jakewharton:butterknife:8.0.1'
     apt 'com.jakewharton:butterknife-compiler:8.0.1'
+    //MVP
+    compile 'com.arello-mobile:moxy:0.4.2'
+    apt 'com.arello-mobile:moxy-compiler:0.4.2'
 }
